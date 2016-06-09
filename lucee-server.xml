@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfLuceeConfiguration hspw="1e4ff17304e0a1c6baa8f5d8057ffedd61f6f7aa6500e5fae27c6cfed833b518" salt="4FDA588E-318A-445C-898736AA1F229A69" version="5.0">
+<system err="default" out="null"/>
+<file-system fld-directory="{lucee-config}/library/fld/" function-directory="{lucee-config}/library/function/" tag-directory="{lucee-config}/library/tag/" temp-directory="{lucee-config}/temp/" tld-directory="{lucee-config}/library/tld/">
+</file-system>
+<dump-writers>
+    <dump-writer class="lucee.runtime.dump.HTMLDumpWriter" default="browser" name="html"/>
+    <dump-writer class="lucee.runtime.dump.TextDumpWriter" default="console" name="text"/>
+    <dump-writer class="lucee.runtime.dump.ClassicHTMLDumpWriter" name="classic"/>
+    <dump-writer class="lucee.runtime.dump.SimpleHTMLDumpWriter" name="simple"/>
+</dump-writers>
+<remote-clients directory="{lucee-config}remote-client/"/>
+<resources>
+    <default-resource-provider arguments="lock-timeout:1000;" class="lucee.commons.io.res.type.file.FileResourceProvider"/>
+    <resource-provider arguments="lock-timeout:20000;socket-timeout:-1;client-timeout:60000" class="lucee.commons.io.res.type.ftp.FTPResourceProvider" scheme="ftp"/>
+    <resource-provider arguments="lock-timeout:1000;case-sensitive:true;" class="lucee.commons.io.res.type.zip.ZipResourceProvider" scheme="zip"/>
+    <resource-provider arguments="lock-timeout:1000;case-sensitive:true;" class="lucee.commons.io.res.type.tar.TarResourceProvider" scheme="tar"/>
+    <resource-provider arguments="lock-timeout:1000;case-sensitive:true;" class="lucee.commons.io.res.type.tgz.TGZResourceProvider" scheme="tgz"/>
+    <resource-provider arguments="lock-timeout:10000;case-sensitive:false;" class="lucee.commons.io.res.type.http.HTTPResourceProvider" scheme="http"/>
+    <resource-provider arguments="lock-timeout:10000;case-sensitive:false;" class="lucee.commons.io.res.type.http.HTTPSResourceProvider" scheme="https"/>
+    <resource-provider arguments="lock-timeout:10000" bundle-name="s3.extension"  bundle-version="0.9.4.101" class="org.lucee.extension.resource.s3.S3ResourceProvider" scheme="s3"/>
+</resources>
+<scope applicationtimeout="1,0,0,0" cascade-to-resultset="yes" cascading="standard" client-directory-max-size="10mb" client-max-age="90" clientmanagement="no" merge-url-form="no" requesttimeout="0,0,0,50" sessionmanagement="yes" sessiontimeout="0,0,30,0" setclientcookies="yes" setdomaincookies="no"/>
+<mail spool-enable="yes" spool-interval="5" timeout="30">
+</mail>
+<mappings>
+    <mapping archive="" inspect-template="once" listener-mode="modern" listener-type="curr2root" physical="{lucee-server}/context/" primary="physical" readonly="yes" virtual="/lucee-server/"/>
+    <mapping archive="{lucee-config}/context/lucee-context.lar" inspect-template="once" listener-mode="modern" listener-type="curr2root" physical="{lucee-config}/context/" primary="physical" readonly="yes" virtual="/lucee/"/>
+    <mapping archive="{lucee-config}/context/lucee-doc.lar" inspect-template="once" primary="archive" readonly="true" toplevel="true" virtual="/lucee/doc"/>
+    <mapping archive="{lucee-config}/context/lucee-admin.lar" inspect-template="once" physical="{lucee-config}/context/admin" primary="physical" readonly="true" toplevel="true" virtual="/lucee/admin"/>
+</mappings>
+<custom-tag>
+    <mapping inspect-template="never" physical="{lucee-config}/customtags/"/>
+</custom-tag>
+<ext-tags>                
+    <ext-tag class="lucee.cfx.example.HelloWorld" name="HelloWorld"type="java"/>
+</ext-tags>
+<component base="/lucee/Component.cfc" data-member-default-access="public" dump-template="/lucee/component-dump.cfm">
+    <mapping inspect-template="never" physical="{lucee-web}/components/" primary="physical" virtual="/default"/>
+</component>
+<regional timeserver="pool.ntp.org"/>
+<orm engine-bundle-name="hibernate.extension" engine-bundle-version="3.5.5.59" engine-class="org.lucee.extension.orm.hibernate.HibernateORMEngine"/>
+<debugging debug="no" log-memory-usage="no" show-query-usage="no" template="/lucee/templates/debugging/debugging.cfm"/>
+<application listener-mode="curr2root" listener-type="mixed"/>
+<update location="http://stable.lucee.org" type="manual"/>
+<flex configuration="manual"/>
+<logging>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/mapping.log" layout="classic" name="mapping"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/rest.log" layout="classic" name="rest"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/gateway.log" layout="classic" name="gateway"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/remoteclient.log" layout="classic" level="info" name="remoteclient"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/orm.log" layout="classic" name="orm"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/mail.log" layout="classic" name="mail"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/search.log" layout="classic" name="search"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/scheduler.log" layout="classic" name="scheduler"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/scope.log" layout="classic" name="scope"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/application.log" layout="classic" name="application"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/exception.log" layout="classic" name="exception"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/trace.log" layout="classic" name="trace"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/thread.log" layout="classic" name="thread"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/deploy.log" layout="classic" name="deploy"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/requesttimeout.log" layout="classic" name="requesttimeout"/>
+    <logger appender="resource" appender-arguments="path:{lucee-config}/logs/memory.log" layout="classic" name="memory"/>
+    <logger appender-arguments="path:{lucee-config}/logs/datasource.log" appender-class="lucee.commons.io.log.log4j.appender.RollingResourceAppender" layout-class="lucee.commons.io.log.log4j.layout.ClassicLayout" name="datasource"/>
+</logging>
+
+<datasource/>
+<extensions>
+    <rhextension file-name="m5119yr1r0zy.lex" id="671B01B8-B3B3-42B9-AC055A356BED5281" name="PostgreSQL" version="8.3.0.jdbc4"/>
+    <rhextension file-name="1c53wa6sie4f6.lex" id="EFDEB172-F52E-4D84-9CD1A1F561B3DFC8" name="Lucene Search Engine" version="2.4.1.29"/>
+    <rhextension file-name="w83ab6h85skh.lex" id="99A4EF8D-F2FD-40C8-8FB8C2E67A4EEEB6" name="Microsoft SQL Server (Vendor Microsoft)" version="4.0.0"/>
+    <rhextension file-name="1seefoic78oi9.lex" id="2BCD080F-4E1E-48F5-BEFE794232A21AF6" name="jTDS (MSSQL,Sybase)" version="1.2.5"/>
+    <rhextension file-name="1ij70cw1wdh9o.lex" id="17AB52DE-B300-A94B-E058BD978511E39E" name="S3 Resource Extension" version="0.9.4.101"/>
+    <rhextension file-name="zgdstubfph1e.lex" id="87FE44E5-179C-43A3-A87B3D38BEF4652E" name="EHCache" version="2.10.0.17"/>
+    <rhextension file-name="siwbg4rbbbfd.lex" id="D46B46A9-A0E3-44E1-D972A04AC3A8DC10" name="Chart Extension" version="1.0.19.23"/>
+    <rhextension file-name="19m0lm7ck5i6a.lex" id="7E673D15-D87C-41A6-8B5F1956528C605F" name="MySQL" version="5.1.38"/>
+    <rhextension file-name="131s63fkhc4l7.lex" id="FAD1E8CB-4F45-4184-86359145767C29DE" name="Hibernate ORM Engine" version="3.5.5.59"/>
+    <rhextension file-name="18buz1m6kzx2m.lex" id="D46D49C3-EB85-8D97-30BEC2F38561E985" name="Lucee Documentation" version="1.0.0.2"/>
+    <rhextension file-name="zklhor3d5jfc.lex" id="66E312DD-D083-27C0-64189D16753FD6F0" name="PDF Extension" version="1.0.0.52"/>
+    <rhextension file-name="wnakxokve7b0.lex" id="CED6227E-0F49-6367-A68D21AACA6B07E8" name="Lucee Administrator" version="1.0.0.3"/>
+</extensions>
+<jdbc>
+    <driver bundle-name="org.lucee.postgresql" bundle-version="8.3.0.jdbc4" class="org.postgresql.Driver" label="PostgreSQL"/>
+    <driver bundle-name="microsoft.sqljdbc" bundle-version="4.0.0" class="com.microsoft.sqlserver.jdbc.SQLServerDriver" label="MicrosoftSQL Server (Vendor Microsoft)"/>
+    <driver bundle-name="jtds" bundle-version="1.2.5" class="net.sourceforge.jtds.jdbc.Driver" label="jTDS (MSSQL,Sybase)"/>
+    <driverbundle-name="com.mysql.jdbc" bundle-version="5.1.38" class="com.mysql.jdbc.Driver" label="MySQL"/>
+</jdbc>
+<search engine-bundle-name="lucene.search.extension" engine-bundle-version="2.4.1.29" engine-class="org.lucee.extension.search.lucene.LuceneSearchEngine"/>
+<caches>
+    <cache bundle-name="ehcache.extension" bundle-version="2.10.0.17" class="org.lucee.extension.cache.eh.EHCache"/>
+</caches>
+</cfLuceeConfiguration>
