@@ -10,3 +10,4 @@ COPY ./lib/mxunit-ant.jar /usr/local/tomcat/lib/mxunit-ant.jar
 # Create Lucee configs
 COPY lucee-server.xml /opt/lucee/server/lucee-server/context/lucee-server.xml
 COPY lucee-web.xml.cfm /opt/lucee/web/lucee-web.xml.cfm
+COPY server.xml /usr/local/tomcat/conf/server.xml
